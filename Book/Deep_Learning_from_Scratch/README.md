@@ -3,7 +3,7 @@
 
 ## 목록
 
-1. [파이썬](*#넘파이(numpy))
+1. [파이썬]()
 2. [퍼셉트론]()
 3. [신경망]()
 4. [신경망 학습]()
@@ -63,14 +63,37 @@
 > import numpy as np
 > import matplotlib.pyplot as plt
 >
-> x = np.arange(0, 6, 0.1)
+> x = np.arange(0, 6, 0.1) # 0~6까지 0.1 간격으로 생성
 > y = np.sin(x)
 > 
 > plt.plot(x, y) # 그래프 작성
 > plt.show() # 그래프 출력
 > ```
-
-
+> pyplot의 기능
+> ```
+> x = np.arange(0, 6, 0.1)
+> y1 = np.sin(x)
+> y2 = np.cos(x)
+> 
+> # 그래프 그리기
+> plt.plot(x, y1, label="sin") #레이블에 'sin'이라고 표시
+> plt.plot(x, y2, linestyle="--", label="cos") # cos 함수는 점선으로 그리고 레이블에 'cos'이라고 표시
+> plt.xlabel("x") # x축 이름
+> plt.ylabel("y") # y축 이름
+> plt.title("sin & cos") # 제목
+> plt.legend()
+> plt.show()
+> ```
+> # 이미지 표시
+> * 이미지를 읽어들일 때는 matplotlib.image 모듈의 imread() 메서드를 사용하고 표시할때는 imshow()를 사용한다
+> ```
+> import matplotlib.pyplot as plt
+> from matplotlib.image import imread
+> 
+> img = imread("이미지 경로")
+> plt.imshow(img)
+> plt.show()
+> ```
 ## 2. 퍼셉트론
 
 ## 3. 신경망
