@@ -62,9 +62,13 @@
 > ```
 > import numpy as np
 > import matplotlib.pyplot as plt
+>
+> x = np.arange(0, 6, 0.1)
+> y = np.sin(x)
+> 
+> plt.plot(x, y) # 그래프 작성
+> plt.show() # 그래프 출력
 > ```
->
->
 
 
 ## 2. 퍼셉트론
