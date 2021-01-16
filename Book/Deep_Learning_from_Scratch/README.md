@@ -69,7 +69,7 @@ y = np.sin(x)
 plt.plot(x, y) # 그래프 작성
 plt.show() # 그래프 출력
 ```
-> pyplot의 기능
+> ### pyplot의 기능
 ```
 x = np.arange(0, 6, 0.1)
 y1 = np.sin(x)
