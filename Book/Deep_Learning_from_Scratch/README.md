@@ -84,7 +84,7 @@ plt.title("sin & cos") # 제목
 plt.legend()
 plt.show()
 ```
-> # 이미지 표시
+> ### 이미지 표시
 > * 이미지를 읽어들일 때는 matplotlib.image 모듈의 imread() 메서드를 사용하고 표시할때는 imshow()를 사용한다
 ```
 import matplotlib.pyplot as plt
@@ -106,8 +106,26 @@ plt.show()
 > ![ml2](https://user-images.githubusercontent.com/68007145/104923581-9528f300-59df-11eb-8397-aa9d01b1e5ba.png)
 > * #### 퍼셉트론은 복수의 입력 신호에 가중치를 부여하고 가중치는 각 신호가 결과에 주는 영향을 조절한다. 즉 __가중치가 클수록 해당 신호가 그만큼 중요함을 뜻__ 한다.
 ***
-
 * ### 퍼셉트론 구현
+> ### AND 게이트 구현
+```
+def AND(x1, x2):
+  w1, w2, theta = 0.5, 0.5, 0.7
+  tmp = x1*w1 + x2*w2
+  if tmp <= theta:
+   return 0
+  elif tmp > theta:
+   return 1
+```
+> 매개변수 w1, w2, theta를 초기화 후 가중치를 곱한 입력 총합이 임계값을 넘으면 1을 반환, 그 외에는 0을 반환
+```
+AND(0, 0) #0을 출력
+AND(1, 0) #0을 출력
+AND(0, 1) #0을 출력
+AND(1, 1) #1을 출력
+```
+> ### 가중치와 편향 도입
+
 ***
 * ### 퍼셉트론의 한계
 ***
