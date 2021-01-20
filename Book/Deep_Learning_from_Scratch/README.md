@@ -126,8 +126,10 @@ AND(1, 1) #1을 출력
 ```
 > ### 가중치와 편향 도입
 > * 기존의 퍼셉트론 동작 수식의 θ(세타)를 -b로 치환한다.       
-> <img width="280" alt="다운로드" src="https://user-images.githubusercontent.com/68007145/105187381-11edd580-5b76-11eb-92bc-d6d523d584fb.png">      
+> <img width="280" alt="다운로드" src="https://user-images.githubusercontent.com/68007145/105187381-11edd580-5b76-11eb-92bc-d6d523d584fb.png">  
+
 > * 위 식에서의 b를 __편향(bias)__ 이라 하며 w는 그대로 가중치이다.
+> * __편향__ 은 뉴런이 얼마나 쉽게 활성화(결과로 1을 출력) 하는가를 조정하는 매개변수이고, __가중치__ 는 각 입력 신호가 결과에 주는 영향력(중요도)를 조절하는 매개변수이다
 > * 식을 해석하면 퍼셉트론은 입력 신호에 가중치를 곱한 값과 편향을 합하여 0을 넘으면 1을 출력, 아니면 0을 출력한다.
 ```
 import numpy as np
@@ -138,13 +140,33 @@ w*x  # array([0., 0.5])
 np.sum(w*x)  #0.5
 np.sum(w*x) + b  # -0.19999999996(대략 -0.2 - 부동소수점에 의한 연산 오차)
 ```
-> ### 가중치와 편향을 도입한 AND 게이트
+> ### 가중치와 편향을 도입한 AND, NAND, OR 게이트
 ```
 def AND(x1, x2) :
  x = np.array([x1, x2])
  w = np.array([0.5, 0.5])
  b = -0.7
  tmp = np.sum(w*x) +b
+ if tmp <= 0:
+  return 0
+ else :
+  return 1
+
+def NAND(x1, x2) :
+ x = np.array([x1, x2])
+ w = np.array([-0.5, -0.5])  #AND와는 가중치와 편향만 다르다
+ b = 0.7
+ tmp = np.sum(w*x) + b
+ if tmp <= 0 :
+  return 0
+ else :
+  return 1
+
+def OR(x1, x2) :
+ x = np.array([x1, x2])
+ w = np.array([0.5, 0.5])  #가중치와 편향이 다르다
+ b = -0.2
+ tmp = np.sum(w*x) + b
  if tmp <= 0:
   return 0
  else :
