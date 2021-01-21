@@ -124,7 +124,6 @@ AND(1, 0) #0을 출력
 AND(0, 1) #0을 출력
 AND(1, 1) #1을 출력
 ```
-***
 > ### 가중치와 편향 도입
 > * 기존의 퍼셉트론 동작 수식의 θ(세타)를 -b로 치환한다.              
 > <img width="280" alt="다운로드" src="https://user-images.githubusercontent.com/68007145/105187381-11edd580-5b76-11eb-92bc-d6d523d584fb.png">      
