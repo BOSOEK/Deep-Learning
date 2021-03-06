@@ -7,4 +7,4 @@
 ### [2. 유니티 교과서(개정 3판)](https://github.com/BOSOEK/Study/tree/main/Book/Unity_textbook)
 
 ***
-### [3. 마이크로컨트롤러 ATmega128 DIY 여행]()
+### [3. 마이크로컨트롤러 ATmega128 DIY 여행](https://github.com/BOSOEK/Study/tree/main/Book/ATmega128_DIY_travel)
