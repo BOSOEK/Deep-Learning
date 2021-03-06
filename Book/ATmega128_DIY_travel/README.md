@@ -59,10 +59,16 @@ int main(void) {
 #include <stdlib.h>  // rand() 함수 라이브러리를 포함 할 수 있는 정보를 가진 헤더파일
 #include <util.delay.h>
 
+//rand() 함수에 상수가 아닌 인수를넣을 때는 
+//delay.h 파일에 
+//#define __DELAY_BACKWARD_COMPATIBLE__
+//#define F_CPU 16000000UL
+//위의 두 코드를 추가해야 오류가 안난다
+
 int main() {
   DDRA = 0xff;
   while(1) {
-    PORTA = rand() % 256;  //0~256 난수 발생 하고 LED 표시
+    PORTA = rand() % 256;  //0~255 난수 발생 하고 LED 표시
     _delay_ms(((rand()%50)+1)*100)  //0.1~5.0초까지 난수 시간 지연
   }
 }
