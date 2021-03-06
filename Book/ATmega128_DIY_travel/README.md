@@ -64,6 +64,7 @@ int main(void) {
 //#define __DELAY_BACKWARD_COMPATIBLE__
 //#define F_CPU 16000000UL
 //위의 두 코드를 추가해야 오류가 안난다
+//단 인수로 상수를 넣을때는 위 코드를 추가하면 안된다.
 
 int main() {
   DDRA = 0xff;
