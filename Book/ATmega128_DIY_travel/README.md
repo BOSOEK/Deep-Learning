@@ -1,7 +1,7 @@
 # 마이크로컨트롤러 ATmega128 DLY 여행
 > 책에서 회로 및 코드 구현은 Proteus 시뮬레이션을 통해 함.
 ## 목록
-### [\[0\]. LED로 꾸미는 트리](#[0]-LED로-꾸미는-트리)
+### [\[0\]. LED로 꾸미는 트리](#0_led로-꾸미는-트리)
 ### [\[1\]. FND로 전화번호 표시기 만들기]()
 ### [\[2\]. 스위치로 1/100 스톱워치 만들기]()
 ### [\[3\]. 버저로 산토끼 노래 연주하기]()
@@ -10,13 +10,15 @@
 ### [\[6\]. UART 통신으로 암호문 보내기]()
 ***
 
-## [0] LED로 꾸미는 트리
+## 0_LED로 꾸미는 트리
 > ### 움직이는 LED 만들기
 * ### 회로
 ![001](https://user-images.githubusercontent.com/68007145/110215477-5dbdc980-7eed-11eb-8189-7591e14fd63d.PNG)
+
+* ### 왼쪽에서 오른쪽으로 불빛이 움직이는 코드
 ```
-// 왼쪽에서 오른쪽으로 불빛이 움직이는 코드
-#include<avr/io.h>
+#include<avr/io.h> 
+#include<util/delay.h>  // _delay_ms 함수 사용을 위한 라이브러리
 
 int main(void) {
   DDRA = 0xff;  //A 구역의 모든 포트를 출력으로 설정
@@ -47,6 +49,21 @@ int main(void) {
       PORTA = i;
       _delay_ms(1000);
     }
+  }
+}
+```
+* ### 크리스마스 트리 만들기(랜덤 불빛)
+> 회로는 동일
+```
+#include <avr.io/h>
+#include <stdlib.h>  // rand() 함수 라이브러리를 포함 할 수 있는 정보를 가진 헤더파일
+#include <util.delay.h>
+
+int main() {
+  DDRA = 0xff;
+  while(1) {
+    PORTA = rand() % 256;  //0~256 난수 발생 하고 LED 표시
+    _delay_ms(((rand()%50)+1)*100)  //0.1~5.0초까지 난수 시간 지연
   }
 }
 ```
