@@ -93,10 +93,9 @@ int main() {
 > 즉 B에 HIGH을 인가하면 C-E가 연결되고 B가 LOW되면 C-E가 끊기는 조건부 스위치임.
 > 우리가 B에 1을 주면 COM(공통회로)가 GND에 연결되며 다른 핀들의 ON/OFF여부에 따라 LED가 바뀐다(이때 전류 크기 문제 발생 X)
 > 또한 B에 0을 주면 턴오프되어 COM이 회로 연결인 끊어지며 모든 LED에 전류가 흐를 수 없어 LED에 불 빛 안나옴
-> 
 * ### FND에 7 출력하기
 > 회로
-* ![캡처](https://user-images.githubusercontent.com/68007145/110227540-c54f3580-7f3c-11eb-8ca9-e080cf571fd6.PNG)
+![캡처](https://user-images.githubusercontent.com/68007145/110227540-c54f3580-7f3c-11eb-8ca9-e080cf571fd6.PNG)
 
 > 코드
 ```
