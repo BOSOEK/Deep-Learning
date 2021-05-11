@@ -1,16 +1,17 @@
-# chapter_3
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# chapter3 프로젝트 및 엡 구조 이해하기
+> 프로젝트의 구조와 앱 구조를 알아보며 간단한 실습을 한다.
+### 프로젝트 구성 폴더
+* .idea : 개발 도구에 필요한 설정
+* android : 안드로이드 네이티브 코드를 작성하는 부분
+* build : 빌드시 생성되는 파일
+* ios : IOS 네이티브 코드를 작성하는 부분
+* lib : 다트 코드를 작성하는 부분
+* test : 테스트 코드를 작성하는 부분
+### 프로젝트 구성 파일
+* .gitignore : Git 설정 파일. 버전 관리시 무사할 파일 규칙 작성
+* .metadata : 프로젝트가 관리하는 파일. __임의로 수정하지 않습니다.__
+* .packages : 각종 패이키 정보. __임의로 수정하지 않는다.__
+* flutter_app.iml : 개발 도구에 필요한 설정 파일. __임의로 수정하지 않는다.__
+* pubspec.lock : 패키지 매니저가 이용하는 파일. __임의로 수정하지 않는다.__
+* pubspec.yaml : 패키지 매니저가 이용하는 파일
+* README.md : 프로젝트 설명을 작성하는 파일
