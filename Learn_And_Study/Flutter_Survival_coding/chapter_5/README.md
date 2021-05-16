@@ -258,3 +258,75 @@
     ),
     ```
 * ### SliverAppBar와 SliverFillRemaining : 화면 헤더를 동적으로 표현하는 위젯
+    > __Scaffold__ 의 __appBar__ 를 지정하지 않고 body에 __CustomScrollView__ 의 인스턴스를 지정한다.
+    > __CustomScrollView__ 의 silver 프로퍼티에 __SliverAppBar__ 와 __SliverFillRemaining__ 위젯을 설정한다.
+    * SliverAppBar 프로퍼티
+        * pinned : 축소 시 상단에 AppBar가 고정될 지 사라질 지 설정
+        * expandedHeight : 확대될 때의 최대 높이를 지정
+        * flexibleSpace : 확대/축소 되는 영역의 UI 작성
+    > flexibleSpace : title과 background 프로퍼티로 AppBar영역이 확장되었을 때의 UI 작성
+    * SliverFillRemaining : 스크롤 영역에 표시될 화면 정의, child 작성 내용 크기가 작아도 __SliverAppBar__ 부분이 축소될 때 딱 하나의 크기가 알아서 결정됨.
+    ```
+    Class SliverPage extends StateLessWidget {
+        @override
+        Widget build(BuildContext context) {
+            return Scaffold(
+                body : CustomScrollview(
+                    slivers: <Widget> [
+                        SliverAppBar (
+                            ...
+                        ),
+                        SliverFillRemaining(
+                            ...
+    ```
+* ### SliverAppBar & SliverList : 리스트 뷰를 사용해 Sliver효과를 주고 싶을 때 사용
+    > 위의 코드에서 __SliverFillRemaining__ 대신 __SliverList__ 사용.
+    * SliverList는 delegate 프로퍼티에 sliverChildListDelegate 클래스 인스턴스 지정하며 인수로 리스트 전달
+    ```
+    ..동일... ),
+    SliverList(
+        delegate : SliverChildListDelegate(리스트),
+    ),
+    ...
+    ```
+## 쿠퍼티노 디자인
+> 머티리얼 : 안드로이드 적용 디자인 규칙
+> 쿠퍼티노 : 아이폰 적용 디자인 규칙
+* ### 쿠퍼티노 기본 UI : 쿠퍼티노는 __AppBar__ 대신 cupertinoNavigationBar를 사용하며, CupertinoSwitch, CupertinoButton 등을 사용함
+    > __import 'package:flutter/cupertino.dart';__ 로 쿠퍼티노 위젯을 가져와야함
+    * __CupertinoNavigationBar__ 는 머티리얼의 __AppBar__ 에 해당하며 leadding(왼쪽), middle(오른쪽, title), trailing(오른쪽) 프로퍼티들을 가진다.
+    * __CupertinoSwitch__ 는 머티리얼의 스위치와 방법이 동일하다.
+    * __CupertinoButton__ 는 RaisedButton에 대응하며 쿠퍼티노는 체크박스 & 라디오 버튼이 따로 없다.(글자만 있는 버튼이나 __borderRadius__ 로 외각선을 설정할 수 있다.)
+* ### CupertinoAlertDialog : 쿠퍼티노 스타일의 AlertDialog다.
+    > 기본적으로는 머티리얼의 __AlertDialog__ 와 같다.
+
+    > 단, actions 프로퍼티에는 CupertinodialogAction 인스턴스를 갖는다.
+    ```
+    showDialog(
+        context : context,
+        builder: (context) => CupertinoalertDialog(
+            title : 위젯,
+            content : 위젯,
+            actions : <Widget> [
+                CupertinodialogAction(...),
+                CupertinodialogAction(...),
+            ],
+        ),
+    );
+    ```
+* ### CupertinoPicker : IOS에서 사용되는 피커로, 스크롤 하고 피커 바깥을 클릭하면 선택 값이 적용됨.
+    ```
+    showCupertinoModalPopup(
+        context: context,
+        builder: (context) => Container(
+            height : 피커의 높이 지정,
+            child: CupertinoPicker(
+                children : <Widget>[..],
+                itemExtent: //표시할 항목의 높이
+                onSelectedItemChanged : (int value) {  //피커의 바깥 부분을 클릭시 피커가 닫히면서 호출
+                    //선택된 항목의 인덱스 value를 처리
+                },
+            ),
+        ),
+    );
+    ```
