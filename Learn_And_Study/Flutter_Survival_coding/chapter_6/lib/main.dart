@@ -5,7 +5,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,54 +12,65 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: FirstPage(),
+      routes: {
+        '/first': (context) => FirstPage(),
+        '/second': (context) => SecondPage(),
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class Person {
+  String name;
+  int age;
 
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
+  Person(this.name, this.age);
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class FirstPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('First'),
+      ),
+      body: RaisedButton(
+        child: Text('다음 페이지로'),
+        onPressed: () async {
+          /*final person = Person('홍길동', 20);
+          final result = Navigator.push(
+            //Second Page로 화면 이동
+            context,
+            MaterialPageRoute(builder: (context) => SecondPage(person: person)),
 
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+          );
+          print(result);*/
+          final result = await Navigator.pushNamed(context, '/second');
+          print(result);
+        },
+      ),
+    );
   }
+}
+
+class SecondPage extends StatelessWidget {
+  final Person person;
+
+  SecondPage({@required this.person});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text('Second'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
+      body: RaisedButton(
+        child: Text('이전 페이지로'),
+        onPressed: () {
+          Navigator.pop(context, 'ok'); //현재 화면 종료 후 이전 화면으로 돌아감.
+        },
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
