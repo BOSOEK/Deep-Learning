@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
 class Person {
   String name;
   int age;
+  int gain;
 
   Person(this.name, this.age);
 }
